@@ -1,5 +1,6 @@
 package com.kkb.hk.controller;
 
+import com.kkb.hk.entity.HkBanner;
 import com.kkb.hk.service.HkBannerService;
 import com.kkb.hk.utils.ReqResultUtil;
 import com.kkb.hk.vo.request.banner.HkBannerRequest;
@@ -52,6 +53,11 @@ public class HkBannerController {
     public ResponseEntity<String> qryListByPage(HkBannerRequest hkBannerRequest) {
         log.info("进入banner列表接口");
         return ReqResultUtil.genSuccessResultResponse(hkBannerService.qryListByPage(hkBannerRequest));
+    }
+
+    @RequestMapping(value = "/add" ,method = RequestMethod.POST)
+    public ResponseEntity<String> add(HkBanner hkBanner){
+        return ReqResultUtil.genSuccessResultResponse(hkBannerService.add(hkBanner));
     }
 
 

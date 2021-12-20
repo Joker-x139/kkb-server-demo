@@ -1,6 +1,8 @@
 package com.kkb.hk.service;
 
+import com.kkb.hk.entity.HkBanner;
 import com.kkb.hk.entity.page.PageResult;
+import com.kkb.hk.entity.reqresult.ReqResult;
 import com.kkb.hk.vo.request.banner.HkBannerRequest;
 import com.kkb.hk.vo.response.banner.HkBannerResponse;
 
@@ -31,4 +33,11 @@ public interface HkBannerService {
      * @date: 2021/12/16 16:23
      */
     PageResult qryListByPage(HkBannerRequest hkBannerRequest);
+
+    /**
+     * 向banner中添加信息
+     * @param hkBanner
+     * @return
+     */
+    ReqResult addBanner(HkBanner hkBanner);
 }

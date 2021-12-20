@@ -1,9 +1,11 @@
 package com.kkb.hk.dao;
 
+import com.kkb.hk.entity.HkBanner;
 import com.kkb.hk.vo.request.banner.HkBannerRequest;
 import com.kkb.hk.vo.response.banner.HkBannerResponse;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -33,5 +35,10 @@ public interface HkBannerDao {
      */
     List<HkBannerResponse> qryListByPage(HkBannerRequest hkBannerRequest);
 
+    /**
+     * 添加一条banner数据
+     * @param hkBanner
+     */
+    void insertHkBanner(HkBanner hkBanner);
 }
 

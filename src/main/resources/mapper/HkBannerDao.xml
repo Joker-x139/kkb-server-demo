@@ -15,6 +15,80 @@
         <result property="updatedBy" column="updated_by" jdbcType="VARCHAR"/>
         <result property="updatedTime" column="updated_time" jdbcType="TIMESTAMP"/>
     </resultMap>
+    <!--    插入banner数据-->
+    <insert id="insertHkBanner" parameterType="com.kkb.hk.entity.HkBanner">
+        insert into hk_banner
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="bannerId != null">
+                    banner_id,
+                </if>
+                <if test="title != null">
+                    title,
+                </if>
+                <if test="description != null">
+                    description,
+                </if>
+                <if test="image != null">
+                    image,
+                </if>
+                <if test="url != null">
+                    url,
+                </if>
+                <if test="status != null">
+                    status,
+                </if>
+                <if test="sort != null">
+                    sort,
+                </if>
+                <if test="createdBy != null">
+                    created_by,
+                </if>
+                <if test="createdTime != null">
+                    created_time,
+                </if>
+                <if test="updatedBy != null">
+                    updated_by,
+                </if>
+                <if test="updatedTime != null">
+                    updated_time,
+                </if>
+            </trim>
+            <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="bannerId != null">
+                    #{bannerId},
+                </if>
+                <if test="title != null">
+                    #{title},
+                </if>
+                <if test="description != null">
+                    #{description},
+                </if>
+                <if test="image != null">
+                    #{image},
+                </if>
+                <if test="url != null">
+                    #{url},
+                </if>
+                <if test="status != null">
+                    #{status},
+                </if>
+                <if test="sort != null">
+                    #{sort},
+                </if>
+                <if test="createdBy != null">
+                    #{createdBy},
+                </if>
+                <if test="createdTime != null">
+                    #{createdTime},
+                </if>
+                <if test="updatedBy != null">
+                    #{updatedBy},
+                </if>
+                <if test="updatedTime != null">
+                    #{updatedTime},
+                </if>
+            </trim>
+    </insert>
 
     <!--查询banner列表数据-->
     <select id="qryList" resultMap="HkBannerResponseMap">

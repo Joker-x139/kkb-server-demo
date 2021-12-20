@@ -5,8 +5,11 @@ import com.alibaba.fastjson.TypeReference;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.kkb.hk.dao.HkBannerDao;
+import com.kkb.hk.entity.HkBanner;
 import com.kkb.hk.entity.page.PageResult;
+import com.kkb.hk.entity.reqresult.ReqResult;
 import com.kkb.hk.service.HkBannerService;
+import com.kkb.hk.utils.DateUtils;
 import com.kkb.hk.utils.PageUtils;
 import com.kkb.hk.utils.StringUtils;
 import com.kkb.hk.vo.request.banner.HkBannerRequest;
@@ -14,6 +17,7 @@ import com.kkb.hk.vo.response.banner.HkBannerResponse;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -63,6 +67,19 @@ public class HkBannerServiceImpl implements HkBannerService {
         PageHelper.startPage(pageNum, pageSize);
         List<HkBannerResponse> responseList = this.hkBannerDao.qryListByPage(hkBannerRequest);
         return PageUtils.getPageResult(new PageInfo<HkBannerResponse>(responseList));
+    }
+
+    /**
+     *像数据库中添加一个banner数据
+     * @param hkBanner
+     * @return  返回成功信息
+     */
+    @Override
+    public ReqResult addBanner(HkBanner hkBanner) {
+        Date nowDate = DateUtils.getNowDate();
+        hkBannerDao.insertHkBanner(hkBanner);
+
+        return new ReqResult(1000);
     }
 
 }

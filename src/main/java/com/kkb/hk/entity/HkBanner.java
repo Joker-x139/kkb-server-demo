@@ -1,6 +1,8 @@
 package com.kkb.hk.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 
 import java.util.Date;
@@ -13,6 +15,8 @@ import java.io.Serializable;
  * @since 2021-09-07 21:10:48
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class HkBanner implements Serializable {
     private static final long serialVersionUID = 550294301675958811L;
     /**
