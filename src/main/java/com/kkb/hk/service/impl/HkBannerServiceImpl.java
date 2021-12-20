@@ -103,4 +103,17 @@ public class HkBannerServiceImpl implements HkBannerService {
         return new ReqResult(9999,"操作失败！要删除的数据不存在！");
     }
 
+    /**
+     * @Description: 通过id查询banner
+     * @Param: [id]
+     * @return: com.kkb.hk.vo.response.banner.HkBannerResponse
+     * @Author: Joker
+     * @Date: 2021/12/20 20:54
+     */
+    @Override
+    public HkBannerResponse qryBannerById(Integer id) {
+        HkBannerResponse banner = hkBannerDao.qryBannerById(id);
+        return banner;
+    }
+
 }

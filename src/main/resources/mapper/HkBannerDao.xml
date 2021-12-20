@@ -116,6 +116,13 @@
         </if>
         order by sort asc,banner_id desc
     </select>
+    <!--通过id查询banner-->
+    <select id="qryBannerById" resultMap="HkBannerResponseMap">
+        select
+            banner_id, title, description, image, url
+        from hk_banner
+        where banner_id = #{id} and status=0
+    </select>
 
 </mapper>
 

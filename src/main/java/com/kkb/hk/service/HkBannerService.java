@@ -51,4 +51,13 @@ public interface HkBannerService {
      * @Date: 2021/12/20 19:52
      */
     ReqResult delBannerById(Integer id);
+
+    /**
+     * @Description: 通过id查询banner
+     * @Param: [id]
+     * @return: com.kkb.hk.vo.response.banner.HkBannerResponse
+     * @Author: Joker
+     * @Date: 2021/12/20 20:54
+     */
+    HkBannerResponse qryBannerById(Integer id);
 }

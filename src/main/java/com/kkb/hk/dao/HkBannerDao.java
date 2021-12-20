@@ -52,5 +52,7 @@ public interface HkBannerDao {
      * @Date: 2021/12/20 20:03
      */
     int delBannerById(Integer id);
+
+    HkBannerResponse qryBannerById(Integer id);
 }
 

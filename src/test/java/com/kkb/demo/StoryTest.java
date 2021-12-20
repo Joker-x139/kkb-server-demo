@@ -59,4 +59,11 @@ public class StoryTest {
         System.out.println(reqResult.getMsg());
     }
 
+    @Test
+    public void testQryBannerById(){
+        Integer id = 10;
+        HkBannerResponse banner = hkBannerService.qryBannerById(id);
+        System.out.println(banner);
+    }
+
 }
