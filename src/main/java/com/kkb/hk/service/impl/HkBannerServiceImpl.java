@@ -15,6 +15,7 @@ import com.kkb.hk.utils.StringUtils;
 import com.kkb.hk.vo.request.banner.HkBannerRequest;
 import com.kkb.hk.vo.response.banner.HkBannerResponse;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -53,6 +54,7 @@ public class HkBannerServiceImpl implements HkBannerService {
         return list;
     }
 
+
     /**
      * @description:  查询banner列表分页查询
      * @param: [hkBannerRequest]
@@ -60,6 +62,7 @@ public class HkBannerServiceImpl implements HkBannerService {
      * @author Allen
      * @date: 2021/12/16 17:48
      */
+
     @Override
     public PageResult qryListByPage(HkBannerRequest hkBannerRequest) {
         int pageNum = hkBannerRequest.getPageNum();
@@ -70,9 +73,11 @@ public class HkBannerServiceImpl implements HkBannerService {
     }
 
     /**
-     *像数据库中添加一个banner数据
-     * @param hkBanner
-     * @return  返回成功信息
+     * @Description: 向banner中添加信息
+     * @Param: [hkBanner]
+     * @return: com.kkb.hk.entity.reqresult.ReqResult
+     * @Author: Joker
+     * @Date: 2021/12/20 18:22
      */
     @Override
     public ReqResult addBanner(HkBanner hkBanner) {
@@ -80,6 +85,22 @@ public class HkBannerServiceImpl implements HkBannerService {
         hkBannerDao.insertHkBanner(hkBanner);
 
         return new ReqResult(1000);
+    }
+
+    /**
+     * @Description: 通过id删除banner数据
+     * @Param: [id]
+     * @return: com.kkb.hk.entity.reqresult.ReqResult
+     * @Author: Joker
+     * @Date: 2021/12/20 20:12
+     */
+    @Override
+    public ReqResult delBannerById(Integer id) {
+        int i = hkBannerDao.delBannerById(id);
+        if(i>0){
+            return new ReqResult(1000);
+        }
+        return new ReqResult(9999,"操作失败！要删除的数据不存在！");
     }
 
 }

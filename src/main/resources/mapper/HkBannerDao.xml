@@ -15,7 +15,7 @@
         <result property="updatedBy" column="updated_by" jdbcType="VARCHAR"/>
         <result property="updatedTime" column="updated_time" jdbcType="TIMESTAMP"/>
     </resultMap>
-    <!--    插入banner数据-->
+    <!--插入banner数据-->
     <insert id="insertHkBanner" parameterType="com.kkb.hk.entity.HkBanner">
         insert into hk_banner
             <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -89,6 +89,11 @@
                 </if>
             </trim>
     </insert>
+
+    <!--从表中通过ID逻辑删除banner数据-->
+    <update id="delBannerById" parameterType="com.kkb.hk.entity.HkBanner">
+        update hk_banner set status = 2 where banner_id = #{id}
+    </update>
 
     <!--查询banner列表数据-->
     <select id="qryList" resultMap="HkBannerResponseMap">

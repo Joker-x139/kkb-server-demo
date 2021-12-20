@@ -57,7 +57,7 @@ public class HkBannerController {
 
     @RequestMapping(value = "/add" ,method = RequestMethod.POST)
     public ResponseEntity<String> add(HkBanner hkBanner){
-        return ReqResultUtil.genSuccessResultResponse(hkBannerService.add(hkBanner));
+        return ReqResultUtil.genSuccessResultResponse(hkBannerService.addBanner(hkBanner));
     }
 
 

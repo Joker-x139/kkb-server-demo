@@ -6,6 +6,8 @@ import com.kkb.hk.entity.HkBanner;
 import com.kkb.hk.entity.reqresult.ReqResult;
 import com.kkb.hk.service.HkBannerService;
 import com.kkb.hk.utils.DateUtils;
+import com.kkb.hk.vo.request.banner.HkBannerRequest;
+import com.kkb.hk.vo.response.banner.HkBannerResponse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +32,10 @@ public class StoryTest {
 
     @Test
     public void test1() {
-        HkBanner hkBanner = new HkBanner(null,"aaa","bbb","asdfa",
+        HkBanner hkBanner = new HkBanner(null,"cbd","bbb","asdfa",
                 "image",null,null,null, DateUtils.getNowDate(),null,null);
         System.out.println("hkbanner====================="+hkBanner);
-        ReqResult add = hkBannerService.add(hkBanner);
+        ReqResult add = hkBannerService.addBanner(hkBanner);
         System.out.println(add.getData());
         System.out.println(add.getMsg());
         System.out.println(add);
@@ -41,8 +43,20 @@ public class StoryTest {
 
 
     @Test
-    public void testqry(){
-//        hkBannerService.qryList();
+    public void testqryList(){
+        HkBannerRequest hkBannerRequest = new HkBannerRequest(null);
+        List<HkBannerResponse> hkBannerResponses = hkBannerService.qryList(hkBannerRequest);
+        for (HkBannerResponse hkBannerRespons : hkBannerResponses) {
+            System.out.println(hkBannerRespons);
+        }
+    }
+
+    @Test
+    public void testDel(){
+        Integer id = 20;
+        ReqResult reqResult = hkBannerService.delBannerById(id);
+        System.out.println(reqResult.getCode());
+        System.out.println(reqResult.getMsg());
     }
 
 }

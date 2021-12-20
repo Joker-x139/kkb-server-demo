@@ -35,9 +35,20 @@ public interface HkBannerService {
     PageResult qryListByPage(HkBannerRequest hkBannerRequest);
 
     /**
-     * 向banner中添加信息
-     * @param hkBanner
-     * @return
+     * @Description: 像banner中添加信息
+     * @Param: [hkBanner]
+     * @return: com.kkb.hk.entity.reqresult.ReqResult
+     * @Author: Joker
+     * @Date: 2021/12/20 18:22
      */
     ReqResult addBanner(HkBanner hkBanner);
+
+    /**
+     * @Description: 通过Id删除banner
+     * @Param: [id]
+     * @return: com.kkb.hk.entity.reqresult.ReqResult
+     * @Author: Joker
+     * @Date: 2021/12/20 19:52
+     */
+    ReqResult delBannerById(Integer id);
 }

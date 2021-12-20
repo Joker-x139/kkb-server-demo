@@ -36,9 +36,21 @@ public interface HkBannerDao {
     List<HkBannerResponse> qryListByPage(HkBannerRequest hkBannerRequest);
 
     /**
-     * 添加一条banner数据
-     * @param hkBanner
+     * @Description: 添加一条banner数据
+     * @Param: [hkBanner]
+     * @return: void
+     * @Author: Joker
+     * @Date: 2021/12/20 18:24
      */
     void insertHkBanner(HkBanner hkBanner);
+
+    /**
+     * @Description: 从表中通过ID删除banner数据
+     * @Param: [id]
+     * @return: void
+     * @Author: Joker
+     * @Date: 2021/12/20 20:03
+     */
+    int delBannerById(Integer id);
 }
 
