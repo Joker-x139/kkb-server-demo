@@ -2,15 +2,19 @@ package com.kkb.hk.controller;
 
 import com.kkb.hk.entity.HkBanner;
 import com.kkb.hk.service.HkBannerService;
+import com.kkb.hk.utils.DateUtils;
 import com.kkb.hk.utils.ReqResultUtil;
 import com.kkb.hk.vo.request.banner.HkBannerRequest;
+import com.kkb.hk.vo.response.banner.HkBannerResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.annotation.Id;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @className HkBannerController
@@ -39,7 +43,6 @@ public class HkBannerController {
         log.info("进入banner列表接口");
         log.info("开始");
         return ReqResultUtil.genSuccessResultResponse(hkBannerService.qryList(hkBannerRequest));
-
     }
 
     /**
@@ -58,6 +61,30 @@ public class HkBannerController {
     @RequestMapping(value = "/add" ,method = RequestMethod.POST)
     public ResponseEntity<String> add(HkBanner hkBanner){
         return ReqResultUtil.genSuccessResultResponse(hkBannerService.addBanner(hkBanner));
+    }
+
+    /**
+     * @Description: 通过id查询单个banner
+     * @Param: [id]
+     * @return: org.springframework.http.ResponseEntity<java.lang.String>
+     * @Author: Joker
+     * @Date: 2021/12/21 12:54
+     */
+    @RequestMapping(value = "/banner/{id}" ,method = RequestMethod.GET)
+    public ResponseEntity<String> qryById(@PathVariable Integer id){
+        return ReqResultUtil.genSuccessResultResponse(hkBannerService.qryBannerById(id));
+    }
+
+    /**
+     * @Description: 通过id删除banner
+     * @Param: [id]
+     * @return: org.springframework.http.ResponseEntity<java.lang.String>
+     * @Author: Joker
+     * @Date: 2021/12/21 12:55
+     */
+    @RequestMapping(value = "/banner/{id}",method = RequestMethod.DELETE)
+    public ResponseEntity<String> delById(@PathVariable Integer id){
+        return ReqResultUtil.genSuccessResultResponse(hkBannerService.delBannerById(id));
     }
 
 

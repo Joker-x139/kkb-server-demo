@@ -34,7 +34,10 @@ spring:
     active: druid
   resources:
     static-locations: [classpath:/templates/]
-
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
 
 # 日志配置
 logging:

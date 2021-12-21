@@ -3,8 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <base href="/kkb-server-demo/">
 </head>
+
 <body>
-Hello Word!
+Hello Word!<br>
+
+<a href="hkBanner/banner/9">测试通过id查询</a>
+
+<form action="/kkb-server-demo/hkBanner/qryList" method="post">
+    <input type="submit" value="qryList">
+</form>
+<form action="/kkb-server-demo/hkBanner/banner/8" method="post">
+    <input name="_method" type="hidden" value="delete">
+    <input type="submit" value="通过id删除">
+</form>
 </body>
 </html>

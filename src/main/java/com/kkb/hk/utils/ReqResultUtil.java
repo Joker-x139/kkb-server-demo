@@ -5,6 +5,7 @@ import com.kkb.hk.entity.reqresult.ReqResult;
 import com.kkb.hk.entity.reqresult.ResultCode;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @className ReqResultUtil
