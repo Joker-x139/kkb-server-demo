@@ -76,6 +76,17 @@ public class HkBannerController {
     }
 
     /**
+     * @Description: 查询所有未被删除的banner
+     * @Param: []
+     * @return: org.springframework.http.ResponseEntity<java.lang.String>
+     * @Author: Joker
+     * @Date: 2021/12/21 13:10
+     */
+    @GetMapping("/bannerList")
+    public ResponseEntity<String> qryBannerList(){
+        return ReqResultUtil.genSuccessResultResponse(hkBannerService.qryBannerList());
+    }
+    /**
      * @Description: 通过id删除banner
      * @Param: [id]
      * @return: org.springframework.http.ResponseEntity<java.lang.String>
@@ -86,6 +97,8 @@ public class HkBannerController {
     public ResponseEntity<String> delById(@PathVariable Integer id){
         return ReqResultUtil.genSuccessResultResponse(hkBannerService.delBannerById(id));
     }
+
+
 
 
 }

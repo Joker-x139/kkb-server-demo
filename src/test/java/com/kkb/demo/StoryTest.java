@@ -30,10 +30,17 @@ public class StoryTest {
     @Autowired
     HkBannerService hkBannerService;
 
+    /**
+     * @Description: 测试添加接口
+     * @Param: []
+     * @return: void
+     * @Author: Joker
+     * @Date: 2021/12/21 13:51
+     */
     @Test
-    public void test1() {
-        HkBanner hkBanner = new HkBanner(null,"cbd","bbb","asdfa",
-                "image",null,null,null, DateUtils.getNowDate(),null,null);
+    public void testAdd() {
+        HkBanner hkBanner = new HkBanner(null,"啊啊啊","OAOA","图片2",
+                "abcde",null,null,"Joker", DateUtils.getNowDate(),null,null);
         System.out.println("hkbanner====================="+hkBanner);
         ReqResult add = hkBannerService.addBanner(hkBanner);
         System.out.println(add.getData());
@@ -41,7 +48,13 @@ public class StoryTest {
         System.out.println(add);
     }
 
-
+    /**
+     * @Description: 测试查询列表接口
+     * @Param: []
+     * @return: void
+     * @Author: Joker
+     * @Date: 2021/12/21 13:52
+     */
     @Test
     public void testqryList(){
         HkBannerRequest hkBannerRequest = new HkBannerRequest(null);
@@ -51,6 +64,13 @@ public class StoryTest {
         }
     }
 
+    /**
+     * @Description: 测试删除接口
+     * @Param: []
+     * @return: void
+     * @Author: Joker
+     * @Date: 2021/12/21 13:52
+     */
     @Test
     public void testDel(){
         Integer id = 20;
@@ -59,11 +79,33 @@ public class StoryTest {
         System.out.println(reqResult.getMsg());
     }
 
+    /**
+     * @Description: 测试通过id查询接口
+     * @Param: []
+     * @return: void
+     * @Author: Joker
+     * @Date: 2021/12/21 13:53
+     */
     @Test
     public void testQryBannerById(){
         Integer id = 10;
         HkBannerResponse banner = hkBannerService.qryBannerById(id);
         System.out.println(banner);
+    }
+
+    /**
+     * @Description: 测试修改接口
+     * @Param: []
+     * @return: void
+     * @Author: Joker
+     * @Date: 2021/12/21 13:53
+     */
+    @Test
+    public void testUpdate(){
+        HkBanner hkBanner = new HkBanner(4,"美女","这是一张美女图片","图片1",
+                "image",0,null,null, null,"Joker",DateUtils.getNowDate());
+        ReqResult update = hkBannerService.update(hkBanner);
+        System.out.println(update.getMsg());
     }
 
 }

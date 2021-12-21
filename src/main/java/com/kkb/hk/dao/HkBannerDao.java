@@ -52,7 +52,29 @@ public interface HkBannerDao {
      * @Date: 2021/12/20 20:03
      */
     int delBannerById(Integer id);
-
+    /**
+     * @Description: 通过id查询banner
+     * @Param: [id]
+     * @return: com.kkb.hk.vo.response.banner.HkBannerResponse
+     * @Author: Joker
+     * @Date: 2021/12/21 13:05
+     */
     HkBannerResponse qryBannerById(Integer id);
+    /**
+     * @Description: 查询所有未被删除的banner
+     * @Param: []
+     * @return: java.util.List<com.kkb.hk.vo.response.banner.HkBannerResponse>
+     * @Author: Joker
+     * @Date: 2021/12/21 13:06
+     */
+    List<HkBannerResponse> qryBannerList();
+    /**
+     * @Description: 通过id找到要修改的数据并进行修改
+     * @Param: [hkBanner]
+     * @return: com.kkb.hk.vo.response.banner.HkBannerResponse
+     * @Author: Joker
+     * @Date: 2021/12/21 13:31
+     */
+    int update(HkBanner hkBanner);
 }
 

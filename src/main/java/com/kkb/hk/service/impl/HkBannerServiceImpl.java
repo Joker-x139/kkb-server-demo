@@ -116,4 +116,33 @@ public class HkBannerServiceImpl implements HkBannerService {
         return banner;
     }
 
+    /**
+     * @Description: 查询所有未被删除的banner
+     * @Param: []
+     * @return: java.util.List<com.kkb.hk.vo.response.banner.HkBannerResponse>
+     * @Author: Joker
+     * @Date: 2021/12/21 13:10
+     */
+    @Override
+    public List<HkBannerResponse> qryBannerList() {
+        List<HkBannerResponse> list = hkBannerDao.qryBannerList();
+        return list;
+    }
+
+    /**
+     * @Description: 通过id找到要修改的数据并进行修改
+     * @Param: [hkBanner]
+     * @return: com.kkb.hk.vo.response.banner.HkBannerResponse
+     * @Author: Joker
+     * @Date: 2021/12/21 13:31
+     */
+    @Override
+    public ReqResult update(HkBanner hkBanner) {
+        int i = hkBannerDao.update(hkBanner);
+        if(i>0){
+            return new ReqResult(1000);
+        }
+        return new ReqResult(9999,"修改失败！请确保输入了正确的id");
+    }
+
 }
