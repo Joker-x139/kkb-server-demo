@@ -57,10 +57,28 @@ public class HkBannerController {
         log.info("进入banner列表接口");
         return ReqResultUtil.genSuccessResultResponse(hkBannerService.qryListByPage(hkBannerRequest));
     }
-
-    @RequestMapping(value = "/add" ,method = RequestMethod.POST)
-    public ResponseEntity<String> add(HkBanner hkBanner){
+    /**
+     * @Description: 添加操作
+     * @Param: [hkBanner]
+     * @return: org.springframework.http.ResponseEntity<java.lang.String>
+     * @Author: Joker
+     * @Date: 2021/12/23 21:54
+     */
+    @PostMapping
+    public ResponseEntity<String> add(@RequestBody HkBanner hkBanner){
         return ReqResultUtil.genSuccessResultResponse(hkBannerService.addBanner(hkBanner));
+    }
+
+    /**
+     * @Description: 通过id修改banner
+     * @Param: [hkBanner]
+     * @return: org.springframework.http.ResponseEntity<java.lang.String>
+     * @Author: Joker
+     * @Date: 2021/12/23 22:24
+     */
+    @PutMapping
+    public ResponseEntity<String> update(@RequestBody HkBanner hkBanner){
+        return ReqResultUtil.genSuccessResultResponse(hkBannerService.update(hkBanner));
     }
 
     /**
@@ -70,9 +88,10 @@ public class HkBannerController {
      * @Author: Joker
      * @Date: 2021/12/21 12:54
      */
-    @RequestMapping(value = "/banner/{id}" ,method = RequestMethod.GET)
+    @GetMapping(value = "{id}")
     public ResponseEntity<String> qryById(@PathVariable Integer id){
-        return ReqResultUtil.genSuccessResultResponse(hkBannerService.qryBannerById(id));
+        HkBannerResponse response = hkBannerService.qryBannerById(id);
+        return ReqResultUtil.genSuccessResultResponse(response);
     }
 
     /**
@@ -82,7 +101,7 @@ public class HkBannerController {
      * @Author: Joker
      * @Date: 2021/12/21 13:10
      */
-    @GetMapping("/bannerList")
+    @GetMapping
     public ResponseEntity<String> qryBannerList(){
         return ReqResultUtil.genSuccessResultResponse(hkBannerService.qryBannerList());
     }
@@ -93,7 +112,7 @@ public class HkBannerController {
      * @Author: Joker
      * @Date: 2021/12/21 12:55
      */
-    @RequestMapping(value = "/banner/{id}",method = RequestMethod.DELETE)
+    @DeleteMapping(value = "{id}")
     public ResponseEntity<String> delById(@PathVariable Integer id){
         return ReqResultUtil.genSuccessResultResponse(hkBannerService.delBannerById(id));
     }

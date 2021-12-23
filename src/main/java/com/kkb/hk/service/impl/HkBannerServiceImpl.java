@@ -82,6 +82,8 @@ public class HkBannerServiceImpl implements HkBannerService {
     @Override
     public ReqResult addBanner(HkBanner hkBanner) {
         Date nowDate = DateUtils.getNowDate();
+        System.out.println(nowDate);
+        hkBanner.setCreatedTime(nowDate);
         hkBannerDao.insertHkBanner(hkBanner);
 
         return new ReqResult(1000);
@@ -138,6 +140,8 @@ public class HkBannerServiceImpl implements HkBannerService {
      */
     @Override
     public ReqResult update(HkBanner hkBanner) {
+        Date nowDate = DateUtils.getNowDate();
+        hkBanner.setUpdatedTime(nowDate);
         int i = hkBannerDao.update(hkBanner);
         if(i>0){
             return new ReqResult(1000);
